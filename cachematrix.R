@@ -11,8 +11,8 @@ setIt <- function(a) {
   Inv <<- NULL
 }
 getIt <- function() x
-setInv <- function(Inverse) inv <<- inverse
-getInv <- function() inv
+setInv <- function(Inverse) Inv <<- Inverse
+getInv <- function() Inv
 list(setIt = setIt,
      getIt = getIt,
      setInv = setInv,
@@ -29,8 +29,8 @@ cacheSolve <- function(x, ...) {
   if(!is.null(Inv)) {
     return(Inv)
   }
-  matr <- x$get()
+  matr <- x$getIt()
   Inv <- solve(matr, ...)
-  x$setInv(inv)
+  x$setInv(Inv)
   Inv
 }
